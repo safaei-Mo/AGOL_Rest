@@ -4,3 +4,4 @@
 ### Displaying an esri map using our unique API key from agol.
 ### Display a point, polylin, and polygon on our map.
 ### Adding a popup message.
+### REST URL service to add the information to our map. REST allows content from a web server like AGOL to be rendered on our web map when we request, often referred to as Dynamic Content. 
