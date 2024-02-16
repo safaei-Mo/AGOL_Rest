@@ -48,9 +48,21 @@
             width: 5
   }  
 };
+const popupTemplate = {
+    title: "{Name}",
+    content: "{Description}"
+ }
+ const attributes = {
+    Name: "Gainesville, FL",
+    Description: "A city in northern Florida, known for the University of Florida."
+ }
+
+
         const pointGraphic = new Graphic({  
          geometry: point,  
-        symbol: simpleMarkerSymbol  
+        symbol: simpleMarkerSymbol,
+        attributes: attributes,
+        popupTemplate: popupTemplate  
 });
 graphicsLayer.add(pointGraphic);
     });
