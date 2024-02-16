@@ -117,13 +117,26 @@ graphicsLayer.add(polygonGraphic);
 graphicsLayer.add(pointGraphic);
 graphicsLayer.add(polylineGraphic);
 
+// Define a pop-up for usaeduLayer
+        const popupEduusa = {
+  "title": "EDUs",
+  "content": "<b>Name:</b> {INSTNM}<br><b>Total Enrollment:</b> {CITY}<br>"
+}
 
 const usaeduLayer = new FeatureLayer({
-url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer" //get URL from AGOL Item Page
-});
-map.add(usaeduLayer);
+url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer", //get URL from AGOL Item Page
+//adding the popup here
+outFields: ["INSTNM","CITY"],
+popupTemplate: popupEduusa
+ });
 
-    });
+ map.add(usaeduLayer);
+});
+
+
+
+
+    
   </script>
 
   <!-- css to make a full screen map -->
