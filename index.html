@@ -29,15 +29,39 @@
       const view = new MapView({
           map: map,
           center: [-82.324829, 29.651634], // Longitude, latitude
-          zoom: 13, // Zoom level
+          zoom: 7, // Zoom level
           container: "viewDiv" // Div element
         });
         const graphicsLayer = new GraphicsLayer();  
         map.add(graphicsLayer);
+
+
         const point = { //Create a point  
         type: "point",  
         longitude: -82.324829,    //long lat of Stevie Ray Vaughan Statue
         latitude: 29.651634};
+
+        const polyline = {
+    type: "polyline",
+    paths: [
+        [-82.324829, 29.651634], // Starting point
+        [-82.324829, 29.651634],
+        [-81.655650, 30.332180]  // Ending point
+        // Add more points if needed
+    ]
+};
+
+const polygon = {
+    type: "polygon",
+    rings: [
+        // Add the coordinates of the vertices of the polygon
+        [-87.634643, 30.86609], // Example point 1
+        [-80.031362, 31.003013], // Example point 2
+        [-80.031362, 24.396308], // Example point 3
+        [-81.949804, 24.396308], // Example point 4
+        [-87.634643, 30.86609] // Closing the polygon
+    ]
+};
 
         const simpleMarkerSymbol = {  
         type: "simple-marker",  
@@ -45,8 +69,23 @@
         color: [0, 0, 139],  // Color of blues rock
         outline: {  
             color: [255, 0, 0], // White  
-            width: 15
+            width: 6
   }  
+};
+
+const simpleLineSymbol = {
+    type: "simple-line",
+    color: [0, 0, 255], // Orange
+    width: 4
+};
+
+const simpleFillSymbol = {
+    type: "simple-fill",
+    color: [227, 139, 79, 0.4], // Orange color with transparency
+    outline: {
+        color: [0, 255, 0],
+        width: 1
+    }
 };
 const popupTemplate = {
     title: "{Name}",
@@ -64,7 +103,18 @@ const popupTemplate = {
         attributes: attributes,
         popupTemplate: popupTemplate  
 });
+        const polylineGraphic = new Graphic({
+          geometry: polyline,
+          symbol: simpleLineSymbol
+});
+const polygonGraphic = new Graphic({
+    geometry: polygon,
+    symbol: simpleFillSymbol
+});
+graphicsLayer.add(polygonGraphic);
 graphicsLayer.add(pointGraphic);
+graphicsLayer.add(polylineGraphic);
+
     });
   </script>
 
