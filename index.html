@@ -120,7 +120,7 @@ graphicsLayer.add(polylineGraphic);
 // Define a pop-up for usaeduLayer
         const popupEduusa = {
   "title": "EDUs",
-  "content": "<b>Name:</b> {INSTNM}<br><b>Total Enrollment:</b> {CITY}<br><b>Total Enrollment:</b> {CITY}<br><b>Longitude:</b> {LONGITUD}<br><b>Latitude:</b> {LATITUDE}<br>"
+  "content": "<b>Name:</b> {INSTNM}<br><b>City:</b> {CITY}<br><br><b>Longitude:</b> {LONGITUD}<br><b>Latitude:</b> {LATITUDE}<br>"
 }
 
 const usaeduLayer = new FeatureLayer({
@@ -129,8 +129,24 @@ url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/College
 outFields: ["INSTNM","CITY","LONGITUD","LATITUDE"],
 popupTemplate: popupEduusa
  });
-
  map.add(usaeduLayer);
+
+
+
+ // Define a pop-up for usaeduLayer
+ const popupAirport = {
+  "Name": "Airports",
+  "content": "<b>Name:</b> {Fac_Name}<br><b>Elevation:</b>{Elevation}<br>"
+}
+ const airportLayer = new FeatureLayer({
+url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_file/FeatureServer", //get URL from AGOL Item Page
+//adding the popup here
+//adding the popup here
+outFields: ["Fac_Name","Elevation"],
+popupTemplate: popupAirport
+ });
+
+ map.add(airportLayer);
 });
 
 
