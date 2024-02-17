@@ -139,8 +139,8 @@ popupTemplate: popupEduusa
         "symbol": {
           "type": "picture-marker",
           "url": "https://sounny.github.io/agol/outline_local_airport_black_24dp.png",
-          "width": "18px",
-          "height": "18px"
+          "width": "10px",
+          "height": "10px"
         }
       }
 
@@ -149,10 +149,32 @@ popupTemplate: popupEduusa
   "Name": "Airports",
   "content": "<b>Type:</b> {Fac_Type}<br><b>Elevation:</b>{Elevation}<br>"
 }
+
+//const to make the airport labels
+const airportLabels = {
+  symbol: {
+    type: "text",
+    color: "#FFFFFF",
+    haloColor: "#5E8D74",
+    haloSize: "2px",
+    font: {
+      size: "6px",
+      family: "Noto Sans",
+      style: "italic",
+      weight: "normal"
+    }
+  },
+  labelPlacement: "above-center",
+  labelExpressionInfo: {
+    expression: "$feature.Fac_Name"
+  }
+};
  const airportLayer = new FeatureLayer({
 url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_file/FeatureServer", 
 renderer: airportRenderer,
-definitionExpression: "Fac_Type = 'AIRPORT'", //adding sql to filter for airports,
+definitionExpression: "Fac_Type = 'AIRPORT'",
+labelingInfo: [airportLabels], //adding the labels
+ //adding sql to filter for airports,
 //get URL from AGOL Item Page
 //adding the popup here
 //adding the popup here
@@ -161,6 +183,30 @@ popupTemplate: popupAirport
  });
 
  map.add(airportLayer);
+
+
+
+
+ const heliportRederer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://safaei-mo.github.io/AGOL/helicopter_FILL0_wght400_GRAD0_opsz24.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
+
+
+
+const heliportLayer = new FeatureLayer({
+url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_file/FeatureServer", 
+renderer: heliportRederer,
+definitionExpression: "Fac_Type = 'heliport'"
+ });
+
+
+ map.add(heliportLayer);
 });
 
 
