@@ -147,7 +147,7 @@ popupTemplate: popupEduusa
  // Define a pop-up for usaeduLayer
  const popupAirport = {
   "Name": "Airports",
-  "content": "<b>Name:</b> {Fac_Name}<br><b>Elevation:</b>{Elevation}<br>"
+  "content": "<b>Type:</b> {Fac_Type}<br><b>Elevation:</b>{Elevation}<br>"
 }
  const airportLayer = new FeatureLayer({
 url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_file/FeatureServer", 
@@ -156,7 +156,7 @@ definitionExpression: "Fac_Type = 'AIRPORT'", //adding sql to filter for airport
 //get URL from AGOL Item Page
 //adding the popup here
 //adding the popup here
-outFields: ["Fac_Name","Elevation"],
+outFields: ["Fac_Type","Elevation"],
 popupTemplate: popupAirport
  });
 
