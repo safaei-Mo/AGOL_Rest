@@ -152,6 +152,7 @@ popupTemplate: popupEduusa
  const airportLayer = new FeatureLayer({
 url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_file/FeatureServer", 
 renderer: airportRenderer,
+definitionExpression: "Fac_Type = 'AIRPORT'", //adding sql to filter for airports,
 //get URL from AGOL Item Page
 //adding the popup here
 //adding the popup here
