@@ -133,13 +133,26 @@ popupTemplate: popupEduusa
 
 
 
+
+ const airportRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://sounny.github.io/agol/outline_local_airport_black_24dp.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
+
  // Define a pop-up for usaeduLayer
  const popupAirport = {
   "Name": "Airports",
   "content": "<b>Name:</b> {Fac_Name}<br><b>Elevation:</b>{Elevation}<br>"
 }
  const airportLayer = new FeatureLayer({
-url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_file/FeatureServer", //get URL from AGOL Item Page
+url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_file/FeatureServer", 
+renderer: airportRenderer,
+//get URL from AGOL Item Page
 //adding the popup here
 //adding the popup here
 outFields: ["Fac_Name","Elevation"],
