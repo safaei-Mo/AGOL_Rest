@@ -19,8 +19,9 @@
 "esri/views/MapView",   
 "esri/Graphic",  
 "esri/layers/GraphicsLayer",   
-"esri/layers/FeatureLayer"
-], function(esriConfig,Map, MapView, Graphic, GraphicsLayer,FeatureLayer) {
+"esri/layers/FeatureLayer",
+"esri/widgets/Editor"
+], function(esriConfig,Map, MapView, Graphic, GraphicsLayer,FeatureLayer,Editor) {
 
       esriConfig.apiKey = "AAPKbbf1d614464f43d6893e89040496e546zaR0zSPYnguI_N0zab0yje30u1aq2GS4mz7fzZ78FQ-aPa8vIq4PFEd2C6ceqofz";
       const map = new Map({
@@ -207,12 +208,37 @@ definitionExpression: "Fac_Type = 'heliport'"
 
 
  map.add(heliportLayer);
+
+
+//adding the const for the feature layer
+const myAirports = new FeatureLayer({
+ url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/Airports_Visited/FeatureServer",
+ 
+ //adding the popup here
+ outFields: ["Airport_Code"],
+
 });
 
+//adding the feature layer to the map
+map.add(myAirports);
+
+// Set the point layer's LayerInfo
+const pointInfos = {
+ layer: myAirports
+}
+
+// Begin Editor constructor
+const editor = new Editor({
+ view: view,
+ layerInfos: [pointInfos]
+ }); // End Editor constructor
+
+// Add the widget to the view
+view.ui.add(editor, "top-right");
 
 
 
-    
+});
   </script>
 
   <!-- css to make a full screen map -->
