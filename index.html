@@ -274,7 +274,11 @@ const editor = new Editor({
 // Add the widget to the view
 view.ui.add(editor, "top-right");
 
+let legend = new Legend({
+  view: view
+});
 
+view.ui.add(legend, "bottom-right");
 
 });
   </script>
