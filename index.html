@@ -274,8 +274,28 @@ const editor = new Editor({
 // Add the widget to the view
 view.ui.add(editor, "top-right");
 
+
+
+
+
 let legend = new Legend({
-  view: view
+  view: view,
+  layerInfos: [{
+    layer: myAirports,
+    title: 'Airports I  have Visited'
+  },
+  {
+    layer: usaeduLayer,
+    title: 'Colleges and Universities'
+  },
+  {
+    layer: airportLayer,
+    title: 'Airports'
+  },
+  {
+    layer: heliportLayer,
+    title: 'Heliports'
+  }]
 });
 
 view.ui.add(legend, "bottom-right");
